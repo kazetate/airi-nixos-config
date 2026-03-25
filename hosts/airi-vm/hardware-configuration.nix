@@ -3,10 +3,12 @@
   # Placeholder for the generated hardware-configuration.nix.
   # You should replace the filesystem device with the real one for your VM.
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-label/root";
     fsType = "ext4";
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    { device = "/dev/disk/by-label/swap"; }
+  ];
 }
 
