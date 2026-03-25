@@ -111,5 +111,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   virtualisation.vmware.guest.enable = true;
+
+  # Safety default: keep AIRI system autostart disabled until the VM is stable.
+  services.airiAutostart.enable = false;
 }
 

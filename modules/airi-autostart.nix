@@ -1,5 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.services.airiAutostart;
+in
 {
+  options.services.airiAutostart.enable = lib.mkEnableOption "AIRI autostart system service";
+
+  config = lib.mkIf cfg.enable {
   users.users.airi = {
     isSystemUser = true;
     group = "airi";
@@ -58,6 +64,7 @@
       Restart = "on-failure";
       RestartSec = "5s";
     };
+  };
   };
 }
 
